@@ -12,4 +12,3 @@ module.exports.campgroundSchema = Joi.object({
 })
 
 
-//TEST 
