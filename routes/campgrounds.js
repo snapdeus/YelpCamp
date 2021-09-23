@@ -1,3 +1,4 @@
+
 express = require('express');
 const router = express.Router();
 const catchAsync = require('../utils/catchAsync');
@@ -15,6 +16,7 @@ const validateCampground = (req, res, next) => {
         next()
     }
 }
+
 
 
 router.get('/', catchAsync(async (req, res) => {
