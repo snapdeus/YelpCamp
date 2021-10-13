@@ -47,11 +47,13 @@ app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, 'public')))
 
 const sessionConfig = {
+    name: "session",
     secret: 'thisshouldbesecret!',
     resave: false,
     saveUninitialized: true,
     cookie: {
         httpOnly: true,
+        // secure: true,
         expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
         maxAge: 1000 * 60 * 60 * 24 * 7
     }
@@ -77,7 +79,11 @@ app.use((req, res, next) => {
 })
 
 
-app.get('/', (req, res) => {
+app.get('/', (req, res) => {CampgroundSchema.virtual('properties.popUpMarkup').get(function () {
+    return `<strong><a href="/campgrounds/${ this._id }">${ this.title }</a>
+        <p>${this.description.substring(0,60)}</p>
+            </strong>`
+});
     res.render('home')
 });
 

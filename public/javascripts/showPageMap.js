@@ -3,8 +3,12 @@ const map = new mapboxgl.Map({
     container: 'map', // container ID
     style: 'mapbox://styles/mapbox/light-v10', // style URL
     center: campground.geometry.coordinates,
-    zoom: 6 // starting zoom
+    zoom: 6, // starting zoom
+    
 });
+
+map.addControl(new mapboxgl.NavigationControl());
+
 const marker1 = new mapboxgl.Marker()
     .setLngLat(campground.geometry.coordinates)
     .setPopup(
